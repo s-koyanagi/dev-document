@@ -1,0 +1,11 @@
+@startuml
+class Task {
+    - タスクID String
+    - 件名 String
+    - カテゴリID String
+    - 担当者ID String
+    - 期限 Date
+    - ラベルID Array<String>
+    - ステータスID String
+}
+@enduml
