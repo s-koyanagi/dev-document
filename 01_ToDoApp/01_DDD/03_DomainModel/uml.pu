@@ -1,11 +1,26 @@
 @startuml
-class Task {
-    - タスクID String
-    - 件名 String
-    - カテゴリID String
-    - 担当者ID String
-    - 期限 Date
-    - ラベルID Array<String>
-    - ステータスID String
+package タスク集約 {
+    object タスク {
+        タスクID
+        件名
+    }
+    object 期限 {
+    }
+    object カテゴリ {
+        カテゴリID
+    }
+    object 進捗ステータス {
+        ステータスID
+    }
+    object ラベル {
+        ラベルID
+    }
 }
+
+package ユーザー集約 {
+    object ユーザー {
+    }
+}
+
+
 @enduml
