@@ -1,17 +1,35 @@
 @startuml
 package タスク集約 {
-    object タスク {
+    class タスク << (A,#f6d53d) AggregateRoot>>{
         タスクID
+        カテゴリID
         件名
+        担当者ID
+        期限
+        ステータスID
     }
-    object 期限 {
+    class 期限 << (V,#f6d53d) ValueObject>> {
+        期限
     }
+    class タスク_ラベル << (E,#f6d53d) Entity>> {
+        タスクID
+        ラベルID
+    }
+}
+
+package カテゴリ集約 {
     object カテゴリ {
         カテゴリID
     }
+}
+
+package 進捗ステータス集約 {
     object 進捗ステータス {
         ステータスID
     }
+}
+
+package ラベル集約 {
     object ラベル {
         ラベルID
     }
@@ -19,8 +37,13 @@ package タスク集約 {
 
 package ユーザー集約 {
     object ユーザー {
+        ユーザID
     }
 }
 
-
+ユーザー <-- タスク
+進捗ステータス <-- タスク
+カテゴリ <-- タスク
+タスク "1" *-- "0..n" タスク_ラベル
+ラベル <-- タスク_ラベル
 @enduml
