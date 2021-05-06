@@ -8,9 +8,16 @@ package タスク集約 {
         期限
         ステータスID
     }
+    note right
+        ・タスクIDはUUID
+        ・登録時の初期ステータスは未着手
+    end note
     class 期限 << (V,#f6d53d) ValueObject>> {
         期限
     }
+    note left
+        ・過去日付は設定できない
+    end note
     class タスク_ラベル << (E,#f6d53d) Entity>> {
         タスクID
         ラベルID
